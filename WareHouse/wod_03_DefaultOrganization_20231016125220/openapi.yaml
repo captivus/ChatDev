@@ -1,0 +1,58 @@
+'''
+This file contains the OpenAPI specification for the word of the day API.
+'''
+openapi: 3.0.0
+info:
+  title: Word of the Day API
+  version: 1.0.0
+paths:
+  /word-of-the-day/{date}:
+    get:
+      summary: Get the word of the day for a given date
+      parameters:
+        - name: date
+          in: path
+          required: true
+          description: The date for which to get the word of the day (YYYY-MM-DD format)
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  word:
+                    type: string
+                    description: The word of the day
+                  definition:
+                    type: string
+                    description: The definition of the word
+                  examples:
+                    type: array
+                    items:
+                      type: string
+                    description: Two example sentences using the word
+        '400':
+          description: Invalid date format
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: Error message

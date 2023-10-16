@@ -1,0 +1,40 @@
+Task:
+Build an API for a word of the day application.  Be sure to implement each of the following requirements.
+* Generate a word of the day for a given date
+* Define the word of the day
+* Give 2 examples of how to use the word of the day in a sentence
+* Use https://www.datamuse.com/api/ to generate the word of the day
+* Use https://dictionaryapi.dev/ for the dictionary API
+* Write all errors that the application encounters out to the console
+* Write a YAML file which conforms to the OpenAI spec to document the API of this app
+* Implement unit tests for the API based on the YAML spec
+* Build this in Python using the FastAPI library
+* Always create a virtual environment for your projects
+
+Config:
+ChatEnvConfig.clear_structure: True
+ChatEnvConfig.git_management: False
+ChatEnvConfig.gui_design: True
+
+
+Roster:
+Chief Executive Officer, Counselor, Chief Human Resource Officer, Chief Product Officer, Chief Technology Officer, Programmer, Code Reviewer, Software Test Engineer, Chief Creative Officer
+
+Modality:
+api
+
+Ideas:
+
+
+Language:
+ Python
+
+Code_Version:
+4.0
+
+Proposed_images:
+0
+
+Incorporated_images:
+0
+
