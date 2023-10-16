@@ -1,3 +1,6 @@
+# ChatDev/camel/utils.py
+# fixed OAI API key bug in ChatDev/camel/utils.py
+
 # =========== Copyright 2023 @ CAMEL-AI.org. All Rights Reserved. ===========
 # Licensed under the Apache License, Version 2.0 (the “License”);
 # you may not use this file except in compliance with the License.
@@ -142,9 +145,18 @@ def openai_api_key_required(func: F) -> F:
         if self.model == ModelType.STUB:
             return func(self, *args, **kwargs)
         elif 'OPENAI_API_KEY' in os.environ:
-            return func(self, *args, **kwargs)
+            return func(self, *args, **kwargs)        
         else:
-            raise ValueError('OpenAI API key not found.')
+            # raise ValueError('OpenAI API key not found.')
+            # Hard loading the API key because this thing won't fucking work!
+            # TODO: do this better later ...
+            import openai
+            from dotenv import load_dotenv
+            
+            load_dotenv()
+            openai.api_key = os.environ['OPENAI_API_KEY']
+
+            return func(self, *args, **kwargs)
 
     return wrapper
 
